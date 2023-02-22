@@ -13,11 +13,10 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-
-
-                        <div class="metrics">
-                            <div class="metric">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32px" height="32px"  viewBox="0 0 24 24"><g>
+                  
+                        <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
+                            <div class=" border-solid border-zinc-800 border-2 bg-gray-800 rounded-2xl p-5 justify-center text-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32px" height="32px" class="mx-auto"  viewBox="0 0 24 24"><g>
                                     <path d="M17.438,21.937H6.562c-1.378,0-2.5-1.122-2.5-2.5v-0.827c0-3.969,3.561-7.198,7.938-7.198
                                         s7.938,3.229,7.938,7.198v0.827C19.938,20.815,18.817,21.937,17.438,21.937z M12,12.412c-3.826,0-6.938,2.78-6.938,6.198v0.827
                                         c0,0.827,0.673,1.5,1.5,1.5h10.877c0.827,0,1.5-0.673,1.5-1.5v-0.827C18.938,15.192,15.826,12.412,12,12.412z"/>
@@ -30,15 +29,15 @@
                                 <div class="metric-value">500</div>
                             </div>
 
-                            <div class="metric">
-                                <img src="teacher-icon.svg" width="32px" height="32px" alt="">
+                            <div class=" border-solid border-zinc-800 border-2 bg-gray-800 rounded-2xl p-5 justify-center text-center">
+                                <img src="teacher-icon.svg" width="32px" height="32px" class="mx-auto" alt="">
 
                                 <div class="metric-title">Total Teachers</div>
                                 <div class="metric-value">50</div>
                             </div>
 
-                            <div class="metric">
-                                <img src="school-building-svgrepo-com.svg"width="32px" height="32px" alt="">
+                            <div class=" border-solid border-zinc-800 border-2 bg-gray-800 rounded-2xl p-5 justify-center text-center">
+                                <img src="school-building-svgrepo-com.svg"width="32px" height="32px" class="mx-auto" alt="">
                         
 
                                 <div class="metric-title">Total Classes</div>
@@ -46,18 +45,35 @@
 
                             </div>
 
-                            <div class="metric">
-                                <img src="register-svgrepo-com.svg"width="32px" height="32px" alt="">
+                            <div class=" border-solid border-zinc-800 border-2 bg-gray-800 rounded-2xl p-5 justify-center text-center">
+                                <img src="register-svgrepo-com.svg"width="32px" height="32px" class="mx-auto" alt="">
                                 <div class="metric-title">Attendance Rate</div>
                                 <div class="metric-value">85%</div>
                             </div>
 
-                            <div class="metric">
-                                <img src="studying-exam-svgrepo-com.svg" width="32px" height="32px" alt="">
+                            <div class=" border-solid border-zinc-800 border-2 bg-gray-800 rounded-2xl p-5 justify-center text-center">
+                                <img src="studying-exam-svgrepo-com.svg" width="32px" height="32px" class="mx-auto" alt="">
                                 <div class="metric-title">Exams Passed</div>
                                 <div class="metric-value">80%</div>
                             </div>
+                            <div class=" border-solid border-zinc-800 border-2 bg-gray-800 rounded-2xl p-5 justify-center text-center">
+                                <img src="worker-svgrepo-com.svg" width="32px" height="32px" class="mx-auto" alt="">
+                                <div class="metric-title">Workes</div>
+                                <div class="metric-value">34</div>
+                            </div>
+                            <div class=" border-solid border-zinc-800 border-2 bg-gray-800 rounded-2xl p-5 justify-center text-center">
+                                <img src="school-building-svgrepo-com.svg" width="32px" height="32px" class="mx-auto" alt="">
+                                <div class="metric-title">Number of Classes</div>
+                                <div class="metric-value">50</div>
+                            </div>
+                        <div class=" border-solid border-zinc-800 border-2 bg-gray-800 rounded-2xl p-5 justify-center text-center">
+                                <img src="buildings-building-construction-estate-svgrepo-com.svg" width="32px" height="32px" class="mx-auto" alt="">
+                                <div class="metric-title">Dommitory</div>
+                                <div class="metric-value">5</div>
+                            </div>
                         </div>
+                        
+                            
 
 
 
@@ -68,6 +84,7 @@
         </div>
     </div>
     <h2>HEADTEACHER REMARKS</h2>
+
     <p
 
 @endsection

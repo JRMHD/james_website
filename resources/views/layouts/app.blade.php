@@ -13,8 +13,10 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
 
     <!-- Scripts -->
+    @vite('resources/css/app.css')
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
@@ -73,7 +75,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4 bg-gray-900 text-gray-200">
             @yield('content')
         </main>
     </div>
