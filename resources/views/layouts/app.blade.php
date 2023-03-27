@@ -15,6 +15,7 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
+    {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
 
     <!-- Scripts -->
     @vite('resources/css/app.css')
@@ -47,10 +48,22 @@
                 <!-- Dropdown menu -->
                 @if (Auth::user())
                     <div id="dropdownAvatar"
-                        class="z-10 hidden bg-gray-900 border-2 border-gray-700 divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-                        <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
-                            <div>{{ Auth::user()->name }}</div>
-                            <div class="font-medium truncate">{{ Auth::user()->email }}</div>
+                        class="z-10 hidden bg-gray-900 border-2 border-gray-700 divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600 overflow-x-hidden ">
+                        <div class="grid grid-cols-2 gap-0">
+
+                            <div class="px-1 py-3 mx-auto">
+                                {{-- <svg class="w-8 h-8 rounded-full " fill="white" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z">
+                                </path>
+                            </svg> --}}
+                                <img class="w-8 h-8 rounded-full " src="{{ asset('img/regan.png') }}" alt="">
+                            </div>
+                            <div class="px-1 py-6 text-sm text-gray-900 dark:text-white text-left">
+                                <div>{{ Auth::user()->name }}</div>
+                                <div class="font-medium truncate">{{ Auth::user()->email }}</div>
+                            </div>
                         </div>
                         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200 px-0 mx-0 text-left"
                             aria-labelledby="dropdownUserAvatarButton">
@@ -110,7 +123,7 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown">\
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}

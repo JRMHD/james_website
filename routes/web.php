@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\StudentsController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,4 +22,19 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/students', [App\Http\Controllers\HomeController::class, 'student'])->name('students');
+Route::get('/teachers', [App\Http\Controllers\HomeController::class, 'teachers'])->name('teachers');
+Route::get('/classes', [App\Http\Controllers\HomeController::class, 'classes'])->name('classes');
+Route::get('/Attendance', [App\Http\Controllers\HomeController::class, 'Attendance'])->name('Attendance');
+Route::get('/Exams', [App\Http\Controllers\HomeController::class, 'Exams'])->name('Exams');
+Route::get('/workers', [App\Http\Controllers\HomeController::class, 'workers'])->name('workers');
+Route::get('/dommitory', [App\Http\Controllers\HomeController::class, 'dommitory'])->name('dommitory');
+Route::get('/noofclasses', [App\Http\Controllers\HomeController::class, 'noofclasses'])->name('noofclasses');
 Route::get('/', [App\Http\Controllers\DashboardController::class, 'dashboard'])->name('dashboard');
+Route::get('/dorms', [App\Http\Controllers\HomeController::class, 'dorms'])->name('dorms');
+Route::get('/lakeview', [App\Http\Controllers\HomeController::class, 'lakeview'])->name('lakeview');
+Route::get('/mountainview', [App\Http\Controllers\HomeController::class, 'mountainview'])->name('mountainview');
+Route::get('/cityview', [App\Http\Controllers\HomeController::class, 'cityview'])->name('cityview');
+Route::get('/mojadom', [App\Http\Controllers\HomeController::class, 'mojadom'])->name('mojadom');
+Route::get('/hillmalayas', [App\Http\Controllers\HomeController::class, 'hillmalayas'])->name('hillmalayas');
+Route::post('/students/create', [App\Http\Controllers\StudentsController::class, 'store'])->name('student-create');
