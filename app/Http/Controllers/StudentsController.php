@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Students;
 use Illuminate\Http\Request;
 
 class StudentsController extends Controller
@@ -13,7 +14,11 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        //
+        {
+            $data['students']=Students::all();
+            // dd($data['students']);
+            return view('student')->with($data);
+        }
     }
 
     /**
@@ -34,7 +39,25 @@ class StudentsController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        $data=$request->all();
+        
+        $store=Students::create($data);
+        // $store = Students::create([
+        //     'name' => $request->name,
+        //     'course' => $request->course,
+        //     'level' => $request->level,
+        //     'dob' => $request->dob,
+        //     'fee' => $request->fee,
+        //     'paid' => $request->paid,
+        //     'tribe' => $request->tribe,
+        //     'county' => $request->county,
+        //     'gender' => $request->gender,
+        //     'next_of_keen' => $request->next_of_keen,
+        //     'tell' => $request->tell,
+        //     'id_no' => $request->id_no
+        // ]);
+       return redirect('/students')->with('message', 'Your Data Was Updated Succesfully');
+        //    dd($store);
     }
 
     /**
@@ -80,5 +103,9 @@ class StudentsController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
 }

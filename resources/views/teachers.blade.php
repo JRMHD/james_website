@@ -3,10 +3,32 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
+            <div>
+                        
+                @if (session('message'))
+                <div id="toast-success" class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800" role="alert">
+                    <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
+                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                        <span class="sr-only">Check icon</span>
+                    </div>
+                    <div class="ml-3 text-sm font-normal">    {{ session('message') }}</div>
+                    <button type="button" class="ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" data-dismiss-target="#toast-success" aria-label="Close">
+                        <span class="sr-only">Close</span>
+                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                    </button>
+                </div>
+{{--                         
+                <div class="alert alert-success">
+                    {{ session('message') }}
+                </div> --}}
+            @endif
+            </div>
+
+            
 
            {{-- create Teachers form --}}
 
-        {{-- <form method="POST" class=" mb-4" action="{{ route('') }}"> --}}
+        <form method="POST" class=" mb-4" action="{{ route('teacher-new') }}">
             @csrf
             <div class="grid gap-6 mb-6 md:grid-cols-3">
                 <div>
@@ -16,7 +38,7 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Reagan Mukabana" required>
                 </div>
-                {{-- '','','','dob','','paid','','county','gender','next_of_keen','','id_no' --}}
+                {{-- '','','','dob','','paid','','county','academic_level','next_of_keen','','id_no' --}}
 
                 <div>
                     <label for="unit"
@@ -26,9 +48,9 @@
                         placeholder="ICT DEPARTMENT" required>
                 </div>
                 <div>
-                    <label for="tell" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone
+                    <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone
                         number</label>
-                    <input type="number" id="tell" name="tell"
+                    <input type="number" id="phone" name="phone"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="123-45-678" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
                 </div>
@@ -53,6 +75,13 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="16/01/2001" required>
                 </div>
+                
+                <div>
+                    <label for="doe" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date of Employment</label>
+                    <input type="date" id="doe" name="doe"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="16/01/2001" required>
+                </div>
                 <div>
                     <label for="county"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">County</label>
@@ -61,11 +90,25 @@
                         placeholder="Nairobi" required>
                 </div>
                 <div>
-                    <label for="gender"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gender</label>
-                    <input type="text" id="gender" name="gender"
+                    <label for="academic_level"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">academic level</label>
+                    <input type="text" id="academic_level" name="academic_level"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Male/Female" required>
+                        placeholder="Barchelor Degree" required>
+                </div>
+                <div>
+                    <label for="marital_status"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">marital status</label>
+                    <input type="text" id="marital_status" name="marital_status"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Married" required>
+                </div>
+                <div>
+                    <label for="spouse_name"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">spouse name</label>
+                    <input type="text" id="spouse_name" name="spouse_name"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Jonathan" >
                 </div>
                 <div>
                     <label for="next_of_keen" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Next Of
@@ -99,101 +142,93 @@
         </form>
 
         {{-- End of the form --}}
-<div class="relative overflow-x-auto">
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-900 uppercase dark:text-gray-400">
-            <tr>
-                <th scope="col" class="px-6 py-3">
-                    Name
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Department
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Subject
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Salary
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="bg-gray-800 dark:bg-gray-800">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Reagan Mukabana
-                </th>
-                <td class="px-6 py-4">
-                    ICT
-                </td>
-                <td class="px-6 py-4">
-                    Computer Programming
-                </td>
-                <td class="px-6 py-4">
-                    $2999
-                </td>
-            </tr>
-            <tr class="bg-gray-800 dark:bg-gray-800">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Perazim Shalom
-                </th>
-                <td class="px-6 py-4">
-                    Science
-                </td>
-                <td class="px-6 py-4">
-                    Medical
-                </td>
-                <td class="px-6 py-4">
-                    $1999
-                </td>
-            </tr>
-            <tr class="bg-gray-800 dark:bg-gray-800">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Achai Florence
-                </th>
-                <td class="px-6 py-4">
-                    Business
-                </td>
-                <td class="px-6 py-4">
-                    Enterprenureship
-                </td>
-                <td class="px-6 py-4">
-                    $2299
-                </td>
-            </tr>
-            <tr class="bg-gray-800 dark:bg-gray-800">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Mercy Likhabi
-                </th>
-                <td class="px-6 py-4">
-                    Business
-                </td>
-                <td class="px-6 py-4">
-                    Business Anylisis
-                </td>
-                <td class="px-6 py-4">
-                    $2499
-                </td>
-            </tr>
-            <tr class="bg-gray-800 dark:bg-gray-800">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Steve Obunga
-                </th>
-                <td class="px-6 py-4">
-                    ICT
-                </td>
-                <td class="px-6 py-4">
-                    Data Anylisis
-                </td>
-                <td class="px-6 py-4">
-                    $3297
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <div class="pb-4 bg-gray-800 dark:bg-gray-900">
+                <div>
+                    <div class="relative overflow-x-auto">
+                        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                            <thead class="text-xs text-gray-900 uppercase dark:text-gray-400">
+                            </thead>
+                            <tbody>
+                                <tr class="bg-gray-800 dark:bg-gray-800">
+                                    <th 
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                       #
+                                    </th>
+                                     <th 
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                   Name
+                                </th>
+
+                                    <th class="px-6 py-4">
+                                        Dob
+                                    </th>
+                                    <th class="px-6 py-4">
+                                        Tribe
+                                    </th>
+                                    <th class="px-6 py-4">
+                                        Salary
+                                    </th>
+                                    <th class="px-6 py-4">
+                                        Phone
+                                    </th>
+                                    <th class="px-6 py-4">
+                                        ID NO
+                                    </th>
+                                    <th class="px-6 py-4">
+                                        County
+                                    </th>
+                                    <th class="px-6 py-4">
+                                        Date Of Employment
+                                    </th>
+                                    <th class="px-6 py-4">
+                                       Academic Level
+                                    </th>
+                                    <th class="px-6 py-4">
+                                        Marital Status
+                                    </th>
+                                    <th class="px-6 py-4">
+                                        Spouse Name
+                                    </th>
+                                </tr>
+                               @foreach ($teachers as $teacher)
+                               <tr>
+                                {{-- 'name',
+                                'dob',
+                                'tribe',
+                                'salary',
+                                'phone',
+                                'id_no',
+                                'county',
+                                'doe',
+                                'next_of_keen',
+                                'academic_level',
+                                'marital_status',
+                                'spouse_name' --}}
+                                <td>{{$teacher->iteration}}</td>
+                                <td>{{$teacher->name}}</td>
+                                <td>{{$teacher->dob}}</td>
+                                <td>{{$teacher->tribe}}</td>
+                                <td>{{$teacher->salary}}</td>
+                                <td>{{$teacher->phone}}</td>
+                                <td>{{$teacher->id_no}}</td>
+                                <td>{{$teacher->county}}</td>
+                                <td>{{$teacher->doe}}</td>
+                                <td>{{$teacher->next_of_keen}}</td>
+                                <td>{{$teacher->academic_level}}</td>
+                                <td>{{$teacher->marital_status}}</td>
+                                <td>{{$teacher->spouse_name}}</td>
+                               </tr>
+                               @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
-    </div>
     <footer class="  px-4 bg-gray-900 sm:p-6 dark:bg-gray-900 pl-0 ml-0 ">
         <div class=" ">
             <div class="mb-6 md:mb-0 pb-8">

@@ -1,11 +1,33 @@
+
+{{-- @dd($workers) --}}
 @extends('layouts.app')
 
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
+            <div>
+                        
+                @if (session('message'))
+                <div id="toast-success" class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800" role="alert">
+                    <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
+                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                        <span class="sr-only">Check icon</span>
+                    </div>
+                    <div class="ml-3 text-sm font-normal">    {{ session('message') }}</div>
+                    <button type="button" class="ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" data-dismiss-target="#toast-success" aria-label="Close">
+                        <span class="sr-only">Close</span>
+                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                    </button>
+                </div>
+{{--                         
+                <div class="alert alert-success">
+                    {{ session('message') }}
+                </div> --}}
+            @endif
+            </div>
              {{-- create Teachers form --}}
 
-        {{-- <form method="POST" class=" mb-4" action="{{ route('') }}"> --}}
+        <form method="POST" class=" mb-4" action="{{ route('workers-create') }}">
             @csrf
             <div class="grid gap-6 mb-6 md:grid-cols-3">
                 <div>
@@ -15,7 +37,7 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Reagan Mukabana" required>
                 </div>
-                {{-- '','','','dob','','paid','','county','gender','next_of_keen','','id_no' --}}
+              {{-- 'name','place_of_work','tell','tribe','fee','dob','county','gender','next_of_keen','id_no', place_of_work--}}
 
                 <div>
                     <label for="place_of_work"
@@ -103,59 +125,62 @@
                         <div class="relative overflow-x-auto">
                             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead class="text-xs text-gray-900 uppercase dark:text-gray-400">
-
                                 </thead>
                                 <tbody>
                                     <tr class="bg-gray-800 dark:bg-gray-800">
-                                        <th scope="row"
+                                        <th 
                                             class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            Reagan Mukabana
+                                           #
                                         </th>
+                                         <th 
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                       Name
+                                    </th>
 
-                                        <td class="px-6 py-4">
-                                            $2999
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-gray-800 dark:bg-gray-800">
-                                        <th scope="row"
-                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            Perazim Shalom
+                                        <th class="px-6 py-4">
+                                            Work
                                         </th>
-
-                                        <td class="px-6 py-4">
-                                            $1999
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-gray-800 dark:bg-gray-800">
-                                        <th scope="row"
-                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            Achai Florence
+                                        <th class="px-6 py-4">
+                                            Tell
                                         </th>
-
-                                        <td class="px-6 py-4">
-                                            $2299
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-gray-800 dark:bg-gray-800">
-                                        <th scope="row"
-                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            Mercy Likhabi
+                                        <th class="px-6 py-4">
+                                            Tribe
                                         </th>
-
-                                        <td class="px-6 py-4">
-                                            $2499
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-gray-800 dark:bg-gray-800">
-                                        <th scope="row"
-                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            Steve Obunga
+                                        <th class="px-6 py-4">
+                                            Fee
                                         </th>
-
-                                        <td class="px-6 py-4">
-                                            $3297
-                                        </td>
+                                        <th class="px-6 py-4">
+                                            Dob
+                                        </th>
+                                        <th class="px-6 py-4">
+                                            County
+                                        </th>
+                                        <th class="px-6 py-4">
+                                            Gender
+                                        </th>
+                                        <th class="px-6 py-4">
+                                            Next Of Keen
+                                        </th>
+                                        <th class="px-6 py-4">
+                                            ID Number
+                                        </th>
                                     </tr>
+                                   @foreach ($workers as $worker)
+                                   <tr>
+{{--    'name','work','tell','tribe','fee','dob','county','gender','next_of_keen','id_no', --}}
+                                    <td>{{$worker->iteration}}</td>
+                                    <td>{{$worker->name}}</td>
+                                    <td>{{$worker->work}}</td>
+                                    <td>{{$worker->tell}}</td>
+                                    <td>{{$worker->tribe}}</td>
+                                    <td>{{$worker->fee}}</td>
+                                    <td>{{$worker->dob}}</td>
+                                    <td>{{$worker->county}}</td>
+                                    <td>{{$worker->gender}}</td>
+                                    <td>{{$worker->next_of_keen}}</td>
+                                    <td>{{$worker->id_no}}</td>
+                                   </tr>
+                                   @endforeach
                                 </tbody>
                             </table>
                         </div>

@@ -7,7 +7,24 @@
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <div class="flex items-center justify-between pb-4 bg-gray-800 dark:bg-gray-900">
                     <div>
-
+                        
+                        @if (session('message'))
+                        <div id="toast-success" class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800" role="alert">
+                            <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
+                                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                <span class="sr-only">Check icon</span>
+                            </div>
+                            <div class="ml-3 text-sm font-normal">    {{ session('message') }}</div>
+                            <button type="button" class="ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" data-dismiss-target="#toast-success" aria-label="Close">
+                                <span class="sr-only">Close</span>
+                                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                            </button>
+                        </div>
+{{--                         
+                        <div class="alert alert-success">
+                            {{ session('message') }}
+                        </div> --}}
+                    @endif
                     </div>
 
                 </div>
@@ -115,187 +132,95 @@
         </form>
 
         {{-- End of the form --}}
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                <tr>
-                    <th scope="col" class="p-4">
-                        <div class="flex items-center">
-                            <input id="checkbox-all-search" type="checkbox"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            <label for="checkbox-all-search" class="sr-only">checkbox</label>
-                        </div>
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Name
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Course
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Status
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Action
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr
-                    class="bg-gray-800 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    <td class="w-4 p-4">
-                        <div class="flex items-center">
-                            <input id="checkbox-table-search-1" type="checkbox"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                        </div>
-                    </td>
-                    <th scope="row"
-                        class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                        <img class="w-10 h-10 rounded-full" src="Class President.jpg" alt="Jese image">
-                        <div class="pl-3">
-                            <div class="text-base font-semibold">Neil Sims</div>
-                            <div class="font-normal text-gray-500">neil.sims@gmail.com</div>
-                        </div>
-                    </th>
-                    <td class="px-6 py-4">
-                        React Developer
-                    </td>
-                    <td class="px-6 py-4">
-                        <div class="flex items-center">
-                            <div class="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div> Online
-                        </div>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit
-                            user</a>
-                    </td>
-                </tr>
-                <tr
-                    class="bg-gray-800 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    <td class="w-4 p-4">
-                        <div class="flex items-center">
-                            <input id="checkbox-table-search-2" type="checkbox"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            <label for="checkbox-table-search-2" class="sr-only">checkbox</label>
-                        </div>
-                    </td>
-                    <th scope="row"
-                        class="flex items-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        <img class="w-10 h-10 rounded-full" src="Debate Team Captain.jpg" alt="Jese image">
-                        <div class="pl-3">
-                            <div class="text-base font-semibold">Bonnie Green</div>
-                            <div class="font-normal text-gray-500">bonnie@flowbite.com</div>
-                        </div>
-                    </th>
-                    <td class="px-6 py-4">
-                        Designer
-                    </td>
-                    <td class="px-6 py-4">
-                        <div class="flex items-center">
-                            <div class="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div> Online
-                        </div>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit
-                            user</a>
-                    </td>
-                </tr>
-                <tr
-                    class="bg-gray-800 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    <td class="w-4 p-4">
-                        <div class="flex items-center">
-                            <input id="checkbox-table-search-2" type="checkbox"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            <label for="checkbox-table-search-2" class="sr-only">checkbox</label>
-                        </div>
-                    </td>
-                    <th scope="row"
-                        class="flex items-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        <img class="w-10 h-10 rounded-full" src="Athletic Team Captain.jpg" alt="Jese image">
-                        <div class="pl-3">
-                            <div class="text-base font-semibold">Jese Leos</div>
-                            <div class="font-normal text-gray-500">jese@gmail.com</div>
-                        </div>
-                    </th>
-                    <td class="px-6 py-4">
-                        Vue JS Developer
-                    </td>
-                    <td class="px-6 py-4">
-                        <div class="flex items-center">
-                            <div class="h-2.5 w-2.5 rounded-full bg-red-500 mr-2"></div> Offline
-                        </div>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit
-                            user</a>
-                    </td>
-                </tr>
-                <tr
-                    class="bg-gray-800 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    <td class="w-4 p-4">
-                        <div class="flex items-center">
-                            <input id="checkbox-table-search-2" type="checkbox"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            <label for="checkbox-table-search-2" class="sr-only">checkbox</label>
-                        </div>
-                    </td>
-                    <th scope="row"
-                        class="flex items-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        <img class="w-10 h-10 rounded-full" src="Drama Club President.jpg" alt="Jese image">
-                        <div class="pl-3">
-                            <div class="text-base font-semibold">Thomas Lean</div>
-                            <div class="font-normal text-gray-500">thomes@gmail.com</div>
-                        </div>
-                    </th>
-                    <td class="px-6 py-4">
-                        UI/UX Engineer
-                    </td>
-                    <td class="px-6 py-4">
-                        <div class="flex items-center">
-                            <div class="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div> Online
-                        </div>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit
-                            user</a>
-                    </td>
-                </tr>
-                <tr class="bg-gray-800 dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    <td class="w-4 p-4">
-                        <div class="flex items-center">
-                            <input id="checkbox-table-search-3" type="checkbox"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            <label for="checkbox-table-search-3" class="sr-only">checkbox</label>
-                        </div>
-                    </td>
-                    <th scope="row"
-                        class="flex items-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        <img class="w-10 h-10 rounded-full" src="Student Newspaper Editor-in-Chief.jpg" alt="Jese image">
-                        <div class="pl-3">
-                            <div class="text-base font-semibold">Leslie Livingston</div>
-                            <div class="font-normal text-gray-500">leslie@gmail.com</div>
-                        </div>
-                    </th>
-                    <td class="px-6 py-4">
-                        SEO Specialist
-                    </td>
-                    <td class="px-6 py-4">
-                        <div class="flex items-center">
-                            <div class="h-2.5 w-2.5 rounded-full bg-red-500 mr-2"></div> Offline
-                        </div>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit
-                            user</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <div class="pb-4 bg-gray-800 dark:bg-gray-900">
+                <div>
+                    <div class="relative overflow-x-auto">
+                        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                            <thead class="text-xs text-gray-900 uppercase dark:text-gray-400">
+                            </thead>
+                            <tbody>
+                                <tr class="bg-gray-800 dark:bg-gray-800">
+                                    <th 
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                       #
+                                    </th>
+                                     <th 
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                   Name
+                                </th>
 
-    </div>
-    </div>
-    <footer class="  px-4 bg-gray-900 sm:p-6 dark:bg-gray-900 pl-0 ml-0 ">
+                                    <th class="px-6 py-4">
+                                        Course
+                                    </th>
+                                    <th class="px-6 py-4">
+                                        level
+                                    </th>
+                                    <th class="px-6 py-4">
+                                        Dob
+                                    </th>
+                                    <th class="px-6 py-4">
+                                        Fee
+                                    </th>
+                                    <th class="px-6 py-4">
+                                        Paid
+                                    </th>
+                                    <th class="px-6 py-4">
+                                        Tribe
+                                    </th>
+                                    <th class="px-6 py-4">
+                                        County
+                                    </th>
+                                    <th class="px-6 py-4">
+                                        Gender
+                                    </th>
+                                    <th class="px-6 py-4">
+                                        Next_of_keen
+                                    </th>
+                                    <th class="px-6 py-4">
+                                        Tell
+                                    </th>
+                                    <th class="px-6 py-4">
+                                        ID No
+                                    </th>
+                                </tr>
+                               @foreach ($students as $student)
+                               <tr>
+                                {{-- 'name',
+                                'course',
+                                'level',
+                                'dob',
+                                'fee',
+                                'paid',
+                                'tribe',
+                                'county',
+                                'gender',
+                                'next_of_keen',
+                                'tell',
+                                'id_no' --}}
+                                <td>{{$student->iteration}}</td>
+                                <td>{{$student->name}}</td>
+                                <td>{{$student->course}}</td>
+                                <td>{{$student->level}}</td>
+                                <td>{{$student->fee}}</td>
+                                <td>{{$student->paid}}</td>
+                                <td>{{$student->tribe}}</td>
+                                <td>{{$student->county}}</td>
+                                <td>{{$student->gender}}</td>
+                                <td>{{$student->next_of_keen}}</td>
+                                <td>{{$student->tell}}</td>
+                                <td>{{$student->id_no}}</td>
+                               </tr>
+                               @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>    <footer class="  px-4 bg-gray-900 sm:p-6 dark:bg-gray-900 pl-0 ml-0 ">
         <div class=" ">
             <div class="mb-6 md:mb-0 pb-8">
                 <a href="#" class="flex items-center">

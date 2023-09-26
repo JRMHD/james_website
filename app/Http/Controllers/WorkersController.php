@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Teachers;
+use App\Models\Workers;
 use Illuminate\Http\Request;
 
-class TeachersController extends Controller
+class WorkersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,8 @@ class TeachersController extends Controller
      */
     public function index()
     {
-        {
-            $data['teachers']=Teachers::all();
-            return view('teachers')->with($data);
-        }
+        $data['workers']=Workers::all();
+        return view('workers')->with($data);
     }
 
     /**
@@ -40,32 +38,34 @@ class TeachersController extends Controller
     {
         $data=$request->all();
         // dd( $data);
-        $store=Teachers::create($data);
-//  $store=Teachers::create([
-//     'name'=>$request->name,
-//     'dob'=>$request->dob,
-//     'tribe'=>$request->tribe,
-//     'salary'=>$request->salary,
-//     'phone'=>$request->phone,
-//     'id_no'=>$request->id_no, 
-//     'county'=>$request->county,
-//     'doe'=>$request->doe,
-//     'next_of_keen'=>$request->next_of_keen,
-//     'academic_level'=>$request->academic_level,
-//     'marital_status'=>$request->marital_status,
-//     'spouse_name'=>$request->spouse_name
-// ]);
-return redirect('/teachers')->with('message', 'Your Data Was Updated Succesfully');
+        $store=Workers::create($data);
         // dd($store);
+        // $store=Workers::create(
+        //     [
+        //         'name' => $request->name,
+        //         'place_of_work'=>$request->place_of_work,
+        //         'tell'=> $request->tell,
+        //         'tribe'=> $request->tribe,
+        //         'fee' => $request->fee,
+        //         'dob'=> $request->dob,
+        //         'county'=> $request->county,
+        //         'gender',
+        //         'next_of_keen',
+        //         'id_no',
+
+
+        //     ]
+        //     );
+            return redirect('/workers')->with('message', 'Your Data Was Updated Succesfully');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Workers  $workers
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Workers $workers)
     {
         //
     }
@@ -73,10 +73,10 @@ return redirect('/teachers')->with('message', 'Your Data Was Updated Succesfully
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Workers  $workers
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Workers $workers)
     {
         //
     }
@@ -85,10 +85,10 @@ return redirect('/teachers')->with('message', 'Your Data Was Updated Succesfully
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Workers  $workers
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Workers $workers)
     {
         //
     }
@@ -96,10 +96,10 @@ return redirect('/teachers')->with('message', 'Your Data Was Updated Succesfully
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Workers  $workers
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Workers $workers)
     {
         //
     }

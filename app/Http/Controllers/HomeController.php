@@ -25,14 +25,14 @@ class HomeController extends Controller
     {
         return view('home');
     }
-    public function student()
-    {
-        return view('student');
-    }
-    public function teachers()
-    {
-        return view('teachers ');
-    }
+    // public function student()
+    // {
+    //     return view('student');
+    // }
+    // public function teachers()
+    // {
+    //     return view('teachers ');
+    // }
     public function classes()
     {
         return view('classes ');
@@ -45,10 +45,10 @@ class HomeController extends Controller
     {
         return view('Exams');
     }
-    public function workers()
-    {
-        return view('workers');
-    }
+    // public function workers()
+    // {
+    //     return view('workers');
+    // }
     public function dommitory()
     {
         return view('dommitory');
